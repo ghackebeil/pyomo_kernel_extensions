@@ -1,0 +1,10 @@
+include LICENSE
+include MANIFEST.in
+include README.rst
+include requirements.txt
+recursive-include src *
+recursive-include examples *
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.coverage
+global-exclude __pycache__

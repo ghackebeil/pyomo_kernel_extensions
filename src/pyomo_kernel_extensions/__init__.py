@@ -1,0 +1,1 @@
+from pyomo_kernel_extensions.__about__ import __version__

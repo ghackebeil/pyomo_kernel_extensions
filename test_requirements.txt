@@ -1,0 +1,5 @@
+-r requirements.txt
+coverage==4.5.4
+pytest
+pytest-coverage
+pytest-doctestplus
