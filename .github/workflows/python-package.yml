@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  CODECOV_TOKEN="df437151-e15b-4ba6-aef6-f3f5b02a6992"
+
 jobs:
   build:
 
@@ -34,3 +37,4 @@ jobs:
       run: |
         pytest -v --cov=pyomo_kernel_extensions --cov=examples --cov=src/tests --cov-report=""
         coverage report
+        bash <(curl -s https://codecov.io/bash)
