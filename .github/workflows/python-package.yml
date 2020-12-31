@@ -32,6 +32,5 @@ jobs:
         python setup.py develop
     - name: Test with pytest
       run: |
-        pytest -v --cov=pybnb --cov=examples --cov=src/tests --cov-report=""
-        coverage combine
+        pytest -v --cov=pyomo_kernel_extensions --cov=examples --cov=src/tests --cov-report=""
         coverage report
