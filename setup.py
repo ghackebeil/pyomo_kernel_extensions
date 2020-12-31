@@ -15,30 +15,38 @@ def _readme():
     with open(os.path.join(here, "README.rst"), encoding="utf-8") as f:
         return f.read()
 
+
 install_requires = []
 with open(os.path.join(here, "requirements.txt")) as f:
-    install_requires.extend([ln.strip() for ln in f
-                             if ln.strip() != ""])
+    install_requires.extend([ln.strip() for ln in f if ln.strip() != ""])
 
 tests_require = []
 with open(os.path.join(here, "test_requirements.txt")) as f:
-    tests_require.extend([ln.strip() for ln in f
-                          if (ln.strip() != "") and \
-                          (not ln.strip() == "-r requirements.txt")])
+    tests_require.extend(
+        [
+            ln.strip()
+            for ln in f
+            if (ln.strip() != "") and (not ln.strip() == "-r requirements.txt")
+        ]
+    )
+
 
 class PyTest(setuptools.command.test.test):
-    user_options = [('pytest-args=', 'a', "Arguments to pass to pytest")]
+    user_options = [("pytest-args=", "a", "Arguments to pass to pytest")]
 
     def initialize_options(self):
         super(PyTest, self).initialize_options()
-        self.pytest_args = ''
+        self.pytest_args = ""
 
     def run_tests(self):
         import shlex
-        #import here, cause outside the eggs aren't loaded
+
+        # import here, cause outside the eggs aren't loaded
         import pytest
+
         errno = pytest.main(shlex.split(self.pytest_args))
         sys.exit(errno)
+
 
 setuptools.setup(
     name=about["__title__"],
@@ -64,13 +72,13 @@ setuptools.setup(
         "Programming Language :: Python :: Implementation :: PyPy",
     ],
     keywords=["optimization"],
-    packages=setuptools.find_packages('src', exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
-    package_dir={'':'src'},
+    packages=setuptools.find_packages(
+        "src", exclude=["*.tests", "*.tests.*", "tests.*", "tests"]
+    ),
+    package_dir={"": "src"},
     install_requires=install_requires,
-    cmdclass={
-        "test": PyTest
-    },
+    cmdclass={"test": PyTest},
     # use MANIFEST.in
     include_package_data=True,
-    tests_require=tests_require
+    tests_require=tests_require,
 )
