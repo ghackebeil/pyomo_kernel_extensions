@@ -25,6 +25,7 @@ for fname in examples:
     tdict[tname] = fname
 assert len(tdict) == len(examples) + 2
 
+
 @pytest.mark.parametrize(("example_name"), sorted(tdict))
 @pytest.mark.example
 def test_example(example_name):
@@ -33,7 +34,4 @@ def test_example(example_name):
     if options is None:
         options = []
     assert os.path.exists(filename)
-    subprocess.check_call(
-        cmd
-        + options
-    )
+    subprocess.check_call(cmd + options)

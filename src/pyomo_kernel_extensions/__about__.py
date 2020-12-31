@@ -1,5 +1,7 @@
 __title__ = "pyomo_kernel_extensions"
-__summary__ = "Optimization utilities built on top of the pyomo.kernel modeling interface"
+__summary__ = (
+    "Optimization utilities built on top of the pyomo.kernel modeling interface"
+)
 __uri__ = "https://github.com/ghackebeil/pyomo_kernel_extensions"
 __version__ = "0.1.dev0"
 __author__ = "Gabriel A. Hackebeil"
