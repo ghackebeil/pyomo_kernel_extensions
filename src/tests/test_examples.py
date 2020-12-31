@@ -2,6 +2,8 @@ import os
 import glob
 import subprocess
 
+import pytest
+
 thisfile = os.path.abspath(__file__)
 thisdir = os.path.dirname(thisfile)
 topdir = os.path.dirname(os.path.dirname(thisdir))
