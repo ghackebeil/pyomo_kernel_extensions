@@ -23,15 +23,12 @@ for fname in examples:
     basename = basename[:-3]
     tname = "test_" + basename
     tdict[tname] = fname
-assert len(tdict) == len(examples) + 2
+assert len(tdict) == len(examples)
 
 
 @pytest.mark.parametrize(("example_name"), sorted(tdict))
-@pytest.mark.example
 def test_example(example_name):
     filename = tdict[example_name]
     cmd = ["python", filename]
-    if options is None:
-        options = []
     assert os.path.exists(filename)
-    subprocess.check_call(cmd + options)
+    subprocess.check_call(cmd)
