@@ -30,11 +30,12 @@ jobs:
         python-version: ${{ matrix.python }}
     - name: Install
       run: |
+        python -m pip install codecov
         python -m pip install --upgrade pip
-        pip install -r test_requirements.txt
+        python -m pip install -r test_requirements.txt
         python setup.py develop
     - name: Test with pytest
       run: |
         pytest -v --cov=pyomo_kernel_extensions --cov=examples --cov=src/tests --cov-report=""
         coverage report
-        bash <(curl -s https://codecov.io/bash)
+        codecov
